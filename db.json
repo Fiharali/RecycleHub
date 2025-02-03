@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "user@example.com",
+      "password": "password123",
+      "firstName": "John",
+      "lastName": "Doe",
+      "address": "123 Main St, Anytown, MA",
+      "phoneNumber": "555-1234",
+      "dateOfBirth": "1990-01-01",
+      "profilePicture": "url-to-image"
+    }
+
+  ],
+  "collectionRequests": [
+    {
+      "id": 1,
+      "userId": 1,
+      "wasteType": "plastic",
+      "photos": ["url-to-photo1", "url-to-photo2"],
+      "estimatedWeight": 1500,
+      "collectionAddress": "456 Elm St, Anytown, MA",
+      "desiredDate": "2025-04-01",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Please collect on time.",
+      "status": "pending"
+    }
+
+  ],
+  "points": [
+    {
+      "id": 1,
+      "userId": 1,
+      "points": 100
+    }
+ 
+  ]
+}
