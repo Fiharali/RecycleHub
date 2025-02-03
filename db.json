@@ -1,35 +1,37 @@
 {
   "users": [
-    
     {
-      "id": "1406",
-      "email": "tizyhecyg@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "firstName": "A dolorem ad qui rer",
-      "lastName": "Mollitia quos blandi",
-      "address": "Unde voluptatem vero",
-      "phoneNumber": "4567876566",
-      "dateOfBirth": "1973-11-26"
+      "id": "6b83",
+      "email": "menygow@mailinator.com",
+      "password": "$2a$10$mNl43cWjKP8b0mxzrXqliOqTohIk3VPvBmYfQdO/Oi8BEKWD30Xoy",
+      "firstName": "Quaerat dolores non ",
+      "lastName": "Dolorum et do odio q",
+      "address": "Magnam vel distincti",
+      "phoneNumber": "5267788833",
+      "dateOfBirth": "1994-11-22",
+      "role": "individual"
     },
     {
-      "id": "57d3",
-      "email": "bifujuwugi@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "firstName": "Et hic placeat amet",
-      "lastName": "Mollit unde rerum cu",
-      "address": "lmhamid",
-      "phoneNumber": "2345678977",
-      "dateOfBirth": "2019-06-24"
+      "id": "5775",
+      "email": "kuvawoly@mailinator.com",
+      "password": "$2a$10$BLvEeqNUHIovqirqihY7EeNQk9kslb57zhmjtbtjuGAK/8Y1tHD.O",
+      "firstName": "Doloremque distincti",
+      "lastName": "Error alias sunt in ",
+      "address": "Totam dolor ex expli",
+      "phoneNumber": "8282822222",
+      "dateOfBirth": "1999-10-08",
+      "role": "individual"
     },
     {
-      "id": "f942",
-      "email": "zisohixege@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "firstName": "Possimus sit digni",
-      "lastName": "Reiciendis sunt temp",
-      "address": "Odit cumque animi p",
-      "phoneNumber": "6678888999",
-      "dateOfBirth": "1981-01-16"
+      "id": "f228",
+      "email": "toti@mailinator.com",
+      "password": "$2a$10$.wet03NJ41FxOEFoQ6ZyzOiofPUxd5MZQ716u4RtbRtu1rx.MgJKi",
+      "firstName": "Et magnam voluptas u",
+      "lastName": "Alias doloribus in v",
+      "address": "Facere perferendis r",
+      "phoneNumber": "6282972828",
+      "dateOfBirth": "1998-10-04",
+      "role": "individual"
     }
   ],
   "collectionRequests": [

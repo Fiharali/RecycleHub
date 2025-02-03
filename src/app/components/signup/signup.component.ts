@@ -45,7 +45,11 @@ export class SignupComponent implements OnInit {
      this.signupForm.reset();
       },
       error: (error) => {
-        this.errorMessage = 'Signup failed. Please try again.';
+        if (error.message === 'Email already exists') {
+          this.errorMessage = 'This email is already registered. Please use a different email.';
+        } else {
+          this.errorMessage = 'Signup failed. Please try again.';
+        }
         console.error('Signup error', error);
       }
     });
