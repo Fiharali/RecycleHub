@@ -1,33 +1,52 @@
 
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = '/api/users';
+ private apiUrl = 'http://localhost:3000/';
 
-  constructor(private http: HttpClient) { }
+  http = inject(HttpClient);
+
 
   signup(user: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/signup`, user);
+    const { id, ...userToCreate } = user;
+
+    return this.http.post<any>(this.apiUrl+"users", userToCreate).pipe(
+      map((createdUser: any) => {
+        this.storeUserInfo(createdUser);
+        return createdUser;
+      })
+    );
   }
 
-  login(credentials: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, credentials);
+
+
+
+
+  storeUserInfo(user: any): void {
+    const { password, ...userToStore } = user;
+    localStorage.setItem('currentUser', JSON.stringify(userToStore));
+    localStorage.setItem('isAuthenticated', 'true');
   }
 
-  getUser(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/me`);
+
+  isAuthenticated(): boolean {
+    return localStorage.getItem('isAuthenticated') === 'true';
   }
 
-  updateUser(user: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/update`, user);
+
+  getCurrentUser(): any {
+    const user = localStorage.getItem('currentUser');
+    return user ? JSON.parse(user) : null;
   }
 
-  deleteUser(): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/delete`);
+  logout(): void {
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('isAuthenticated');
   }
+
 }

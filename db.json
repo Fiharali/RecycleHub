@@ -1,24 +1,46 @@
 {
   "users": [
+    
     {
-      "id": 1,
-      "email": "user@example.com",
-      "password": "password123",
-      "firstName": "John",
-      "lastName": "Doe",
-      "address": "123 Main St, Anytown, MA",
-      "phoneNumber": "555-1234",
-      "dateOfBirth": "1990-01-01",
-      "profilePicture": "url-to-image"
+      "id": "1406",
+      "email": "tizyhecyg@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "firstName": "A dolorem ad qui rer",
+      "lastName": "Mollitia quos blandi",
+      "address": "Unde voluptatem vero",
+      "phoneNumber": "4567876566",
+      "dateOfBirth": "1973-11-26"
+    },
+    {
+      "id": "57d3",
+      "email": "bifujuwugi@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "firstName": "Et hic placeat amet",
+      "lastName": "Mollit unde rerum cu",
+      "address": "lmhamid",
+      "phoneNumber": "2345678977",
+      "dateOfBirth": "2019-06-24"
+    },
+    {
+      "id": "f942",
+      "email": "zisohixege@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "firstName": "Possimus sit digni",
+      "lastName": "Reiciendis sunt temp",
+      "address": "Odit cumque animi p",
+      "phoneNumber": "6678888999",
+      "dateOfBirth": "1981-01-16"
     }
-
   ],
   "collectionRequests": [
     {
       "id": 1,
       "userId": 1,
       "wasteType": "plastic",
-      "photos": ["url-to-photo1", "url-to-photo2"],
+      "photos": [
+        "url-to-photo1",
+        "url-to-photo2"
+      ],
       "estimatedWeight": 1500,
       "collectionAddress": "456 Elm St, Anytown, MA",
       "desiredDate": "2025-04-01",
@@ -26,7 +48,6 @@
       "notes": "Please collect on time.",
       "status": "pending"
     }
-
   ],
   "points": [
     {
@@ -34,6 +55,5 @@
       "userId": 1,
       "points": 100
     }
- 
   ]
 }

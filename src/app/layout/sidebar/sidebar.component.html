@@ -1,0 +1,47 @@
+
+
+
+
+<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dar:bg-gray-800 dar:border-gray-700" aria-label="Sidebar">
+
+  <div class="h-full px-3 pb-4 overflow-y-auto bg-white dar:bg-gray-800">
+     <ul class="space-y-2 font-medium mt-10 ">
+        <li>
+           <a  class="flex items-center p-2 text-gray-900 rounded-lg dar:text-white hover:bg-gray-100 dar:hover:bg-gray-700 group">
+
+              <h1 class="ms-3">ADMIN DASHBOARD </h1>
+           </a>
+        </li>
+        <hR/>
+        <li>
+         <a routerLink="/admin/users" class="flex items-center p-2 text-gray-900 rounded-lg dar:text-white hover:bg-gray-100 dar:hover:bg-gray-700 group">
+           <i class="fa-solid fa-users"></i>
+            <span class="ms-3">Users</span>
+         </a>
+      </li>
+
+      <li>
+       <a routerLink="/admin/competitions" class="flex items-center p-2 text-gray-900 rounded-lg dar:text-white hover:bg-gray-100 dar:hover:bg-gray-700 group">
+         <i class="fa-solid fa-people-line"></i>
+          <span class="ms-3">competitions</span>
+       </a>
+    </li>
+
+       <li>
+         <a routerLink="/admin/species" class="flex items-center p-2 text-gray-900 rounded-lg dar:text-white hover:bg-gray-100 dar:hover:bg-gray-700 group">
+           <i class="fa-solid fa-table-columns"></i>
+           <span class="ms-3">species</span>
+         </a>
+       </li>
+
+
+
+        <li>
+           <button   (click)="logOut()"  class="flex w-full text-left items-center p-2 text-gray-900 rounded-lg dar:text-white hover:bg-gray-100 dar:hover:bg-gray-700 group">
+             <i class="fa-solid fa-right-from-bracket"></i>
+              <span class="flex-1 ms-3 whitespace-nowrap">Sign Out</span>
+           </button>
+        </li>
+     </ul>
+  </div>
+</aside>
