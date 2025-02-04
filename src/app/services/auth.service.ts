@@ -74,8 +74,6 @@ export class AuthService {
   }
 
 
-
-
   checkEmailExists(email: string): Observable<boolean> {
     return this.http.get<any[]>(`${this.apiUrl}users?email=${email}`).pipe(
       map(users => users.length > 0),

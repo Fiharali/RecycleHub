@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
       error: (error) => {
         if (error.message === 'User not found') {
           this.errorMessage = 'No account found with this email.';
+          error.message = '';
         } else if (error.message === 'Invalid password') {
           this.errorMessage = 'Incorrect password. Please try again.';
         } else {

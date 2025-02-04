@@ -32,6 +32,17 @@
       "phoneNumber": "6282972828",
       "dateOfBirth": "1998-10-04",
       "role": "individual"
+    },
+    {
+      "id": "6b1c",
+      "email": "gepaty@mailinator.com",
+      "password": "$2a$10$8rgL5MC8vr5kxAC16M2U8efnp1YMTkX89o4Gwg/gNEkmSlRzH/Eo6",
+      "firstName": "Pariatur Ab nisi vo",
+      "lastName": "Consequuntur vel rer",
+      "address": "Impedit aut qui ame",
+      "phoneNumber": "1234567890",
+      "dateOfBirth": "1994-10-05",
+      "role": "individual"
     }
   ],
   "collectionRequests": [
