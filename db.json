@@ -47,18 +47,57 @@
   ],
   "collectionRequests": [
     {
-      "id": 1,
-      "userId": 1,
+      "id": "ee10",
+      "userId": "6b83",
+      "wasteType": "glass",
+      "photos": [],
+      "estimatedWeight": 88,
+      "collectionAddress": "Aut sed mollit quis ",
+      "desiredDate": "2023-11-18",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Aliquid mollitia asp",
+      "status": "pending"
+    },
+    {
+      "id": "02b7",
+      "userId": "6b83",
       "wasteType": "plastic",
       "photos": [
-        "url-to-photo1",
-        "url-to-photo2"
+        "Non labore non nisi "
       ],
-      "estimatedWeight": 1500,
-      "collectionAddress": "456 Elm St, Anytown, MA",
-      "desiredDate": "2025-04-01",
+      "estimatedWeight": 311,
+      "collectionAddress": "Molestiae temporibus",
+      "desiredDate": "2014-12-15",
       "desiredTimeSlot": "09:00-12:00",
-      "notes": "Please collect on time.",
+      "notes": "Aperiam consequatur ",
+      "status": "pending"
+    },
+    {
+      "id": "cdb8",
+      "userId": "6b83",
+      "wasteType": "metal",
+      "photos": [
+        "Esse dolores molliti"
+      ],
+      "estimatedWeight": 7,
+      "collectionAddress": "Quidem illum suscip",
+      "desiredDate": "2015-07-21",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Incidunt ut facere ",
+      "status": "pending"
+    },
+    {
+      "id": "f036",
+      "userId": "6b83",
+      "wasteType": "plastic, paper",
+      "photos": [
+        "Voluptatibus officii"
+      ],
+      "estimatedWeight": 80,
+      "collectionAddress": "Impedit minus aliqu",
+      "desiredDate": "2023-05-13",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Adipisci ab non nost",
       "status": "pending"
     }
   ],
