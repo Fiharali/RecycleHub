@@ -13,8 +13,12 @@ export class CollectionRequestService {
 
   constructor(private http: HttpClient) { }
 
-  getCollectionRequests(userId: number): Observable<CollectionRequest[]> {
-    return this.http.get<CollectionRequest[]>(`${this.apiUrl}?userId=${userId}`);
+  // getCollectionRequests(userId: number): Observable<CollectionRequest[]> {
+  //   return this.http.get<CollectionRequest[]>(`${this.apiUrl}?userId=${userId}`);
+  // }
+
+  getCollectionRequests(): Observable<CollectionRequest[]> {
+    return this.http.get<CollectionRequest[]>(`${this.apiUrl}`);
   }
 
   addCollectionRequest(request: CollectionRequest): Observable<CollectionRequest> {

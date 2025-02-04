@@ -5,6 +5,7 @@ import { CollectionRequestService } from '../../services/collection-request.serv
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
+import { firstValueFrom } from 'rxjs';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class CollectionRequestComponent implements OnInit {
   errorMessage: string = '';
   maxRequests: number = 3;
   maxTotalWeight: number = 10000;
+  hasReachedMaxRequests!: boolean;
 
   constructor(
     private collectionService: CollectionRequestService,
@@ -101,9 +103,39 @@ export class CollectionRequestComponent implements OnInit {
     return timePattern.test(control.value) ? null : { invalidTimeSlot: true };
   }
 
-  onSubmit(): void {
+  private async checkPendingRequests(): Promise<void> {
+    try {
+      const currentUserId = this.authService.getCurrentUser().id;
+      const requests = await firstValueFrom(
+        this.collectionService.getCollectionRequests()
+      );
+
+      const pendingRequests = requests.filter(
+        (request: CollectionRequest) =>
+          request.userId === currentUserId && request.status === 'pending'
+      );
+
+      this.hasReachedMaxRequests = pendingRequests.length >= this.maxRequests;
+
+      if (this.hasReachedMaxRequests) {
+        this.errorMessage = 'You have reached the maximum limit of 3 pending requests.';
+        this.collectionForm.disable();
+      }
+    } catch (error) {
+      console.error('Error checking pending requests:', error);
+      this.errorMessage = 'Error checking pending requests. Please try again later.';
+    }
+  }
+
+  async onSubmit(): Promise<void> {
     if (this.collectionForm.invalid) {
       this.errorMessage = 'Please correct the errors in the form.';
+      return;
+    }
+
+
+    await this.checkPendingRequests();
+    if (this.hasReachedMaxRequests) {
       return;
     }
 

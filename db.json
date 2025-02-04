@@ -47,7 +47,7 @@
   ],
   "collectionRequests": [
     {
-      "id": "ee10",
+      "id": "6b831",
       "userId": "6b83",
       "wasteType": "glass",
       "photos": [],
@@ -74,7 +74,7 @@
     },
     {
       "id": "cdb8",
-      "userId": "6b83",
+      "userId": "683",
       "wasteType": "metal",
       "photos": [
         "Esse dolores molliti"
@@ -88,7 +88,7 @@
     },
     {
       "id": "f036",
-      "userId": "6b83",
+      "userId": "6b683",
       "wasteType": "plastic, paper",
       "photos": [
         "Voluptatibus officii"
@@ -98,6 +98,42 @@
       "desiredDate": "2023-05-13",
       "desiredTimeSlot": "09:00-12:00",
       "notes": "Adipisci ab non nost",
+      "status": "pending"
+    },
+    {
+      "id": "249e",
+      "userId": "61183",
+      "wasteType": "glass",
+      "photos": [],
+      "estimatedWeight": 4,
+      "collectionAddress": "Pariatur Et quaerat",
+      "desiredDate": "2018-06-13",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Et dolor excepteur a",
+      "status": "pending"
+    },
+    {
+      "id": "ae1f",
+      "userId": "61183",
+      "wasteType": "glass",
+      "photos": [],
+      "estimatedWeight": 25,
+      "collectionAddress": "Est aliqua Aspernat",
+      "desiredDate": "1981-02-20",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Mollitia velit provi",
+      "status": "pending"
+    },
+    {
+      "id": "f968",
+      "userId": "61183",
+      "wasteType": "metal",
+      "photos": [],
+      "estimatedWeight": 78,
+      "collectionAddress": "Quisquam cillum eum ",
+      "desiredDate": "1990-08-24",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Ut cumque veniam au",
       "status": "pending"
     }
   ],
