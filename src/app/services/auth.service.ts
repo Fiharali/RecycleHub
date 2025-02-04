@@ -112,4 +112,24 @@ export class AuthService {
     localStorage.removeItem('isAuthenticated');
   }
 
+
+
+  updateUser(user: any): Observable<any> {
+    const currentUser = this.getCurrentUser();
+    if (!currentUser) {
+      return throwError(() => new Error('No user is currently logged in'));
+    }
+
+    return this.http.put<any>(`${this.apiUrl}users/${currentUser.id}`, user).pipe(
+      map(updatedUser => {
+        this.storeUserInfo(updatedUser);
+        return updatedUser;
+      }),
+      catchError(error => {
+        console.error('Update user error', error);
+        return throwError(() => new Error('Failed to update user'));
+      })
+    );
+  }
+
 }

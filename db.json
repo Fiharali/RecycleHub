@@ -1,15 +1,13 @@
 {
   "users": [
     {
-      "id": "6b83",
       "email": "menygow@mailinator.com",
-      "password": "$2a$10$mNl43cWjKP8b0mxzrXqliOqTohIk3VPvBmYfQdO/Oi8BEKWD30Xoy",
-      "firstName": "Quaerat dolores non ",
+      "firstName": "Quaerat dolores non AA",
       "lastName": "Dolorum et do odio q",
       "address": "Magnam vel distincti",
-      "phoneNumber": "5267788833",
+      "phoneNumber": "5252778263",
       "dateOfBirth": "1994-11-22",
-      "role": "individual"
+      "id": "6b83"
     },
     {
       "id": "5775",
