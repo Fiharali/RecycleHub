@@ -69,5 +69,9 @@
     <div *ngIf="errorMessage" class="text-red-500 mt-4 text-center">
       {{ errorMessage }}
     </div>
+    <div class="mt-6 text-center">
+      <a [routerLink]="['/login']" routerLinkActive="router-link-active"  href="#" class="text-sm text-blue-600 hover:underline">You have an account? Login</a>
+    </div>
   </div>
+
 </div>
