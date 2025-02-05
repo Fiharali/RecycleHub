@@ -1,8 +1,9 @@
 
 import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { catchError, map, Observable, of, switchMap, throwError } from 'rxjs';
 import * as bcrypt from 'bcryptjs';
+import { User } from '../models/user.mode';
 
 @Injectable({
   providedIn: 'root'
@@ -91,8 +92,8 @@ export class AuthService {
 
 
   storeUserInfo(user: any): void {
-    const { password, ...userToStore } = user;
-    localStorage.setItem('currentUser', JSON.stringify(userToStore));
+
+    localStorage.setItem('currentUser', JSON.stringify(user));
     localStorage.setItem('isAuthenticated', 'true');
   }
 
@@ -102,32 +103,71 @@ export class AuthService {
   }
 
 
-  getCurrentUser(): any {
-    const user = localStorage.getItem('currentUser');
-    return user ? JSON.parse(user) : null;
+  getCurrentUser(): Observable<User | null> {
+    const userString = localStorage.getItem('currentUser');
+    if (!userString) {
+      return of(null);
+    }
+
+    try {
+      const user: User = JSON.parse(userString);
+      return this.getUser(user.email).pipe(
+        map(fetchedUser => {
+          if (fetchedUser && fetchedUser.length > 0) {
+            return { ...user, password: fetchedUser[0].password };
+          }
+          return user;
+        }),
+        catchError(error => {
+          console.error('Error fetching user details:', error);
+          return of(user);
+        })
+      );
+    } catch (error) {
+      console.error('Error parsing user from localStorage:', error);
+      return of(null);
+    }
+  }
+  getUser(email: string): Observable<User[]> {
+    if (!email) {
+      return of([]);
+    }
+
+    return this.http.get<User[]>(`${this.apiUrl}users`, {
+      params: new HttpParams().set('email', email)
+    }).pipe(
+      catchError(error => {
+        console.error('Error fetching user:', error);
+        return of([]);
+      })
+    );
   }
 
   logout(): void {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('isAuthenticated');
+
   }
 
 
 
   updateUser(user: any): Observable<any> {
-    const currentUser = this.getCurrentUser();
-    if (!currentUser) {
-      return throwError(() => new Error('No user is currently logged in'));
-    }
+    return this.getCurrentUser().pipe(
+      switchMap(currentUser => {
+        if (!currentUser) {
+          return throwError(() => new Error('No user is currently logged in'));
+        }
 
-    return this.http.put<any>(`${this.apiUrl}users/${currentUser.id}`, user).pipe(
-      map(updatedUser => {
-        this.storeUserInfo(updatedUser);
-        return updatedUser;
-      }),
-      catchError(error => {
-        console.error('Update user error', error);
-        return throwError(() => new Error('Failed to update user'));
+        return this.http.put<any>(`${this.apiUrl}users/${currentUser.id}`, user).pipe(
+          map(updatedUser => {
+            this.storeUserInfo(updatedUser);
+            return updatedUser;
+          }),
+          catchError(error => {
+            console.error('Update user error', error);
+            return throwError(() => new Error('Failed to update user'));
+          })
+        );
       })
     );
   }

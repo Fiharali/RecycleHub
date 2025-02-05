@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { NavbarComponent } from "../../layout/navbar/navbar.component";
 import { SidebarComponent } from "../../layout/sidebar/sidebar.component";
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
+import { User } from '../../models/user.mode';
 
 @Component({
   selector: 'app-profile',
@@ -18,22 +20,65 @@ export class ProfileComponent implements OnInit {
   errorMessage: string = '';
   successMessage: string = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.profileForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required]),
+      phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^\d{10}$/)]),
+      dateOfBirth: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
+    });
+  }
 
   ngOnInit(): void {
-    const currentUser = this.authService.getCurrentUser();
-    if (!currentUser) {
-      this.router.navigate(['/login']);
-      return;
-    }
+    this.loadUserData();
+  }
 
+  private loadUserData(): void {
+    this.authService.getCurrentUser().subscribe({
+      next: (user) => {
+        if (!user) {
+          this.router.navigate(['/login']);
+          return;
+        }
+        this.updateFormWithUserData(user);
+      },
+      error: (error) => {
+        console.error('Error fetching user data:', error);
+        this.errorMessage = 'Error loading user data. Please try again later.';
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  private updateFormWithUserData(user: User): void {
+    this.profileForm.patchValue({
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      address: user.address,
+      phoneNumber: user.phoneNumber,
+      dateOfBirth: user.dateOfBirth,
+      password: user.password
+    });
+  }
+  private initializeForm(user: User): void {
     this.profileForm = new FormGroup({
-      email: new FormControl(currentUser.email, [Validators.required, Validators.email]),
-      firstName: new FormControl(currentUser.firstName, [Validators.required]),
-      lastName: new FormControl(currentUser.lastName, [Validators.required]),
-      address: new FormControl(currentUser.address, [Validators.required]),
-      phoneNumber: new FormControl(currentUser.phoneNumber, [Validators.required, Validators.pattern(/^\d{10}$/)]),
-      dateOfBirth: new FormControl(currentUser.dateOfBirth, [Validators.required])
+      email: new FormControl(user.email, [Validators.required, Validators.email]),
+      firstName: new FormControl(user.firstName, [Validators.required]),
+      lastName: new FormControl(user.lastName, [Validators.required]),
+      address: new FormControl(user.address, [Validators.required]),
+      phoneNumber: new FormControl(user.phoneNumber, [
+        Validators.required,
+        Validators.pattern(/^\d{10}$/)
+      ]),
+      dateOfBirth: new FormControl(user.dateOfBirth, [Validators.required]),
+      password: new FormControl(user.password, [Validators.required])
     });
   }
 
@@ -51,7 +96,12 @@ export class ProfileComponent implements OnInit {
         this.errorMessage = '';
 
         this.authService.storeUserInfo(response);
-        alert('Profile updated successfully.');
+
+        Swal.fire({
+          title: 'Success',
+          text: 'Profile updated successfully.',
+          icon: 'success',
+        });
       },
       error: (error) => {
         if (error.message === 'Failed to update user') {

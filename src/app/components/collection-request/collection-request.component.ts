@@ -6,13 +6,16 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { firstValueFrom } from 'rxjs';
+import Swal from 'sweetalert2';
+import { SidebarComponent } from "../../layout/sidebar/sidebar.component";
+import { NavbarComponent } from "../../layout/navbar/navbar.component";
 
 
 @Component({
   selector: 'app-collection-request',
   templateUrl: './collection-request.component.html',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, SidebarComponent, NavbarComponent],
 })
 export class CollectionRequestComponent implements OnInit {
   collectionForm!: FormGroup;
@@ -105,7 +108,7 @@ export class CollectionRequestComponent implements OnInit {
 
   private async checkPendingRequests(): Promise<void> {
     try {
-      const currentUserId = this.authService.getCurrentUser().id;
+      const currentUserId = Number((await firstValueFrom(this.authService.getCurrentUser()))?.id ?? 0);
       const requests = await firstValueFrom(
         this.collectionService.getCollectionRequests()
       );
@@ -140,7 +143,7 @@ export class CollectionRequestComponent implements OnInit {
     }
 
     const request: CollectionRequest = {
-      userId: this.authService.getCurrentUser().id,
+      userId: Number((await firstValueFrom(this.authService.getCurrentUser()))?.id ?? 0),
       wasteType: this.wasteTypes.value.join(', '),
       photos: this.photos.value.filter((photo: string) => photo),
       estimatedWeight: this.collectionForm.value.estimatedWeight,
@@ -153,13 +156,12 @@ export class CollectionRequestComponent implements OnInit {
 
     this.collectionService.addCollectionRequest(request).subscribe({
       next: () => {
-        // Swal.fire({
-        //   title: "Good job!",
-        //   text: "You clicked the button!",
-        //   icon: "success"
-        // });
+        Swal.fire({
+          title: "Good job!",
+          text: "You clicked the button!",
+          icon: "success"
+        });
 
-        alert('Collection request submitted successfully');
         this.collectionForm.reset();
       },
       error: (error) => {

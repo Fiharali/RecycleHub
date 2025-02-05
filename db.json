@@ -4,32 +4,31 @@
       "email": "menygow@mailinator.com",
       "firstName": "Quaerat dolores non AA",
       "lastName": "Dolorum et do odio q",
+      "password": "$2a$10$BLvEeqNUHIovqirqihY7EeNQk9kslb57zhmjtbtjuGAK/8Y1tHD.O",
       "address": "Magnam vel distincti",
-      "phoneNumber": "5252778263",
-      "dateOfBirth": "1994-11-22",
+      "phoneNumber": "5252778269",
+      "dateOfBirth": "2024-11-22",
       "id": "6b83"
     },
     {
-      "id": "5775",
       "email": "kuvawoly@mailinator.com",
-      "password": "$2a$10$BLvEeqNUHIovqirqihY7EeNQk9kslb57zhmjtbtjuGAK/8Y1tHD.O",
       "firstName": "Doloremque distincti",
       "lastName": "Error alias sunt in ",
       "address": "Totam dolor ex expli",
       "phoneNumber": "8282822222",
       "dateOfBirth": "1999-10-08",
-      "role": "individual"
+      "password": "$2a$10$BLvEeqNUHIovqirqihY7EeNQk9kslb57zhmjtbtjuGAK/8Y1tHD.O",
+      "id": "5775"
     },
     {
-      "id": "f228",
-      "email": "toti@mailinator.com",
-      "password": "$2a$10$.wet03NJ41FxOEFoQ6ZyzOiofPUxd5MZQ716u4RtbRtu1rx.MgJKi",
-      "firstName": "Et magnam voluptas u",
-      "lastName": "Alias doloribus in v",
-      "address": "Facere perferendis r",
-      "phoneNumber": "6282972828",
-      "dateOfBirth": "1998-10-04",
-      "role": "individual"
+      "email": "menygow@mailinator.com",
+      "password": "$2a$10$BLvEeqNUHIovqirqihY7EeNQk9kslb57zhmjtbtjuGAK/8Y1tHD.O",
+      "firstName": "Quaerat dolores non AA",
+      "lastName": "Dolorum et do odio q",
+      "address": "Magnam vel distincti",
+      "phoneNumber": "5252778269",
+      "dateOfBirth": "2024-11-22",
+      "id": "f228"
     },
     {
       "id": "6b1c",
