@@ -6,7 +6,7 @@ export interface CollectionRequest {
   estimatedWeight: number;
   collectionAddress: string;
   desiredDate: string;
-  desiredTimeSlot: string; 
+  desiredTimeSlot: string;
   notes?: string;
   status: string; // 'pending', 'occupied', 'in_progress', 'validated', 'rejected'
 }

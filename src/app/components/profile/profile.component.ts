@@ -67,20 +67,8 @@ export class ProfileComponent implements OnInit {
       password: user.password
     });
   }
-  private initializeForm(user: User): void {
-    this.profileForm = new FormGroup({
-      email: new FormControl(user.email, [Validators.required, Validators.email]),
-      firstName: new FormControl(user.firstName, [Validators.required]),
-      lastName: new FormControl(user.lastName, [Validators.required]),
-      address: new FormControl(user.address, [Validators.required]),
-      phoneNumber: new FormControl(user.phoneNumber, [
-        Validators.required,
-        Validators.pattern(/^\d{10}$/)
-      ]),
-      dateOfBirth: new FormControl(user.dateOfBirth, [Validators.required]),
-      password: new FormControl(user.password, [Validators.required])
-    });
-  }
+
+
 
   onUpdate(): void {
     if (this.profileForm.invalid) {
