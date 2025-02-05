@@ -2,7 +2,7 @@ export interface CollectionRequest {
   id?: number;
   userId: number;
   wasteType: string; // 'plastic', 'glass', 'paper', 'metal'
-  photos?: string[];
+  photos?: [string, ...string[]];
   estimatedWeight: number;
   collectionAddress: string;
   desiredDate: string;

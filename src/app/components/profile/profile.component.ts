@@ -31,7 +31,8 @@ export class ProfileComponent implements OnInit {
       address: new FormControl('', [Validators.required]),
       phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^\d{10}$/)]),
       dateOfBirth: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required])
+      password: new FormControl('', [Validators.required]),
+      role: new FormControl('')
     });
   }
 
@@ -64,7 +65,8 @@ export class ProfileComponent implements OnInit {
       address: user.address,
       phoneNumber: user.phoneNumber,
       dateOfBirth: user.dateOfBirth,
-      password: user.password
+      password: user.password,
+      role: user.role
     });
   }
 

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { AuthService } from '../../services/auth.service';
 import { CollectionRequestService } from '../../services/collection-request.service';
+import { RequestStatus } from '../../models/request-status.enum';
 
 @Component({
   selector: 'app-home',
@@ -37,6 +38,7 @@ import { CollectionRequestService } from '../../services/collection-request.serv
   ]
 })
 export class HomeComponent {
+
 
   title = 'EcoTrack';
   currentState = 'normal';
@@ -124,13 +126,19 @@ export class HomeComponent {
     this.currentState = state;
   }
 
-  getStatusClass(status: 'pending' | 'completed' | 'cancelled' | 'default'): string {
-    const statusClasses: { [key in 'pending' | 'completed' | 'cancelled' | 'default']: string } = {
+
+  getStatusClass(status: string): string {
+    const statusClasses: { [key: string]: string } = {
       'pending': 'bg-yellow-100 text-yellow-800',
       'completed': 'bg-green-100 text-green-800',
       'cancelled': 'bg-red-100 text-red-800',
       'default': 'bg-gray-100 text-gray-800'
     };
-    return statusClasses[status] || statusClasses.default;
+    return statusClasses[status] || statusClasses['default'];
+  }
+
+
+deleteRequest( id: number) {
+    console.log(id);
   }
 }

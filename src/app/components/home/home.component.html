@@ -55,14 +55,14 @@
       <div
         *ngFor="let request of collectionRequests | async"
         class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:shadow-2xl"
-        [@cardHover]="currentState"
+
         (mouseenter)="toggleHover('hover')"
         (mouseleave)="toggleHover('normal')"
       >
         <!-- Image Section -->
         <div class="relative h-48 mb-6 rounded-lg overflow-hidden">
           <img
-            [src]="request?.photos?.length ? request.photos[0] : defaultImage"
+            [src]="request?.photos?.[0] || defaultImage"
             [alt]="'Collection Request ' + request.id"
             class="w-full h-full object-cover"
           />
@@ -73,19 +73,19 @@
 
         <!-- Waste Type -->
         <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-          <svg
-            class="w-8 h-8 text-green-600"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+
+            <button type="submit"  (click)="request.id ? deleteRequest(request.id) : null" [disabled]="request.status!='pending'" >
+              <svg
+              class="w-8 h-8 text-green-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M 10.806641 2 C 10.289641 2 9.7956875 2.2043125 9.4296875 2.5703125 L 9 3 L 4 3 A 1.0001 1.0001 0 1 0 4 5 L 20 5 A 1.0001 1.0001 0 1 0 20 3 L 15 3 L 14.570312 2.5703125 C 14.205312 2.2043125 13.710359 2 13.193359 2 L 10.806641 2 z M 4.3652344 7 L 5.8925781 20.263672 C 6.0245781 21.253672 6.877 22 7.875 22 L 16.123047 22 C 17.121047 22 17.974422 21.254859 18.107422 20.255859 L 19.634766 7 L 4.3652344 7 z"></path>
+            </svg>
+            </button>
+
+
         </div>
 
         <!-- Content -->
@@ -96,31 +96,22 @@
 
           <div class="text-gray-600">
             <p class="flex items-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2M6 7l-3-1m3 1l3 9a5.002 5.002 0 006.001 0M18 7l-3-1m3 1l3 9a5.002 5.002 0 006.001 0M18 7l-6-2m0-1v1m0 0v1m0-1v1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <!-- SVG Icon -->
               {{ request.estimatedWeight }} kg
             </p>
 
             <p class="flex items-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <!-- SVG Icon -->
               {{ request.collectionAddress }}
             </p>
 
             <p class="flex items-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <!-- SVG Icon -->
               {{ request.desiredDate | date:'mediumDate' }}
             </p>
 
             <p class="flex items-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <!-- SVG Icon -->
               {{ request.desiredTimeSlot }}
             </p>
           </div>

@@ -12,12 +12,13 @@
     },
     {
       "email": "kuvawoly@mailinator.com",
-      "firstName": "Doloremque distincti 1",
+      "firstName": "Doloremque distincti",
       "lastName": "Error alias sunt in ",
       "address": "Totam dolor ex expli",
       "phoneNumber": "8282822222",
       "dateOfBirth": "1999-10-08",
       "password": "$2a$10$BLvEeqNUHIovqirqihY7EeNQk9kslb57zhmjtbtjuGAK/8Y1tHD.O",
+      "role": "individual",
       "id": "5775"
     },
     {
@@ -107,7 +108,7 @@
       "desiredDate": "2018-06-13",
       "desiredTimeSlot": "09:00-12:00",
       "notes": "Et dolor excepteur a",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "ae1f",
@@ -125,7 +126,9 @@
       "id": "f968",
       "userId": "5775",
       "wasteType": "metal",
-      "photos": [],
+      "photos": [
+        "https://imgv3.fotor.com/images/slider-image/A-clear-close-up-photo-of-a-woman.jpg"
+      ],
       "estimatedWeight": 78,
       "collectionAddress": "Quisquam cillum eum ",
       "desiredDate": "1990-08-24",
