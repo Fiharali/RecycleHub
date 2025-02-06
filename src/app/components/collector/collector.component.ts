@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map, of, switchMap } from 'rxjs';
 import { CollectionRequest } from '../../models/collection-request.model';
 import { CollectionRequestService } from '../../services/collection-request.service';
 import { AuthService } from '../../services/auth.service';
@@ -31,10 +31,25 @@ export class CollectorComponent {
   }
 
   loadCollections() {
-    this.collectionRequests =
-      this.collectionRequestService.getCollectionRequestsWithStatusPending();
-  }
 
+    this.authService.getCurrentUser().pipe(
+      switchMap(currentUser => {
+        if (!currentUser) {
+          return of([]);
+        }
+
+        return this.collectionRequestService.getCollectionRequestsWithStatusPending(currentUser.address);
+      })
+    ).subscribe({
+      next: (requests) => {
+        this.collectionRequests = of(requests);
+      },
+      error: (error) => {
+        console.error('Error fetching collection requests:', error);
+      }
+    });
+    
+  }
   getStatusClass(status: string): string {
     const statusClasses: { [key: string]: string } = {
       pending: 'bg-yellow-100 text-yellow-800',
@@ -69,8 +84,7 @@ export class CollectorComponent {
                 text: `Request status updated to ${newStatus}`,
                 icon: 'success',
               });
-              this.collectionRequests =
-                this.collectionRequestService.getCollectionRequestsWithStatusPending();
+              this.loadCollections();
             },
             error: (error) => {
               console.error('Error updating status:', error);
