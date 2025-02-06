@@ -29,7 +29,7 @@ export class CollectionRequestService {
 
 
   deleteCollectionRequest(id: number) {
-    return this.http.delete(`${this.apiUrl}+?id=${id}`);
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
 

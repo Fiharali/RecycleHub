@@ -35,32 +35,6 @@
   ],
   "collectionRequests": [
     {
-      "id": "6b831",
-      "userId": null,
-      "wasteType": "glass",
-      "photos": [],
-      "estimatedWeight": 88,
-      "collectionAddress": "Aut sed mollit quis ",
-      "desiredDate": "2023-11-18",
-      "desiredTimeSlot": "09:00-12:00",
-      "notes": "Aliquid mollitia asp",
-      "status": "pending"
-    },
-    {
-      "id": "02b7",
-      "userId": null,
-      "wasteType": "plastic",
-      "photos": [
-        "Non labore non nisi "
-      ],
-      "estimatedWeight": 311,
-      "collectionAddress": "Molestiae temporibus",
-      "desiredDate": "2014-12-15",
-      "desiredTimeSlot": "09:00-12:00",
-      "notes": "Aperiam consequatur ",
-      "status": "pending"
-    },
-    {
       "id": "cdb8",
       "userId": "683",
       "wasteType": "metal",
@@ -99,18 +73,6 @@
       "desiredTimeSlot": "09:00-12:00",
       "notes": "Et dolor excepteur a",
       "status": "completed"
-    },
-    {
-      "id": "ae1f",
-      "userId": null,
-      "wasteType": "glass",
-      "photos": [],
-      "estimatedWeight": 25,
-      "collectionAddress": "Est aliqua Aspernat",
-      "desiredDate": "1981-02-20",
-      "desiredTimeSlot": "09:00-12:00",
-      "notes": "Mollitia velit provi",
-      "status": "pending"
     },
     {
       "id": "f968",
