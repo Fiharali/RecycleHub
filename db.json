@@ -9,6 +9,7 @@
       "phoneNumber": "5252778269",
       "dateOfBirth": "2024-11-22",
       "role": "collector",
+      "points": 0,
       "id": "f228"
     },
     {
@@ -20,6 +21,7 @@
       "address": "rabat",
       "phoneNumber": "1234567890",
       "dateOfBirth": "1994-10-05",
+      "points": 0,
       "role": "individual"
     },
     {
@@ -31,6 +33,7 @@
       "address": "casa",
       "phoneNumber": "5452662778",
       "dateOfBirth": "2001-11-06",
+      "points": 0,
       "role": "individual"
     },
     {
@@ -41,8 +44,21 @@
       "lastName": "Elit nisi aliqua O",
       "address": "tanger",
       "phoneNumber": "4567877722",
+      "points": 0,
       "dateOfBirth": "1999-07-16",
       "role": "individual"
+    },
+    {
+      "email": "funijo@mailinator.com",
+      "firstName": "Ullam velit a quia c1",
+      "lastName": "Ea blanditiis quibus",
+      "address": "Alias explicabo Eos",
+      "phoneNumber": "5627892929",
+      "dateOfBirth": "2004-02-02",
+      "password": "$2a$10$n9XFQVTvzC8zEsngxO1qEu6GUl8AzhWboefkpM7FngSpSmzC2Sxsq",
+      "role": "individual",
+      "points": 0,
+      "id": "ef55"
     }
   ],
   "collectionRequests": [
@@ -157,6 +173,18 @@
       "status": "pending"
     },
     {
+      "id": "e969",
+      "userId": "1f64",
+      "wasteType": "metal",
+      "photos": [],
+      "estimatedWeight": 14,
+      "collectionAddress": "casa",
+      "desiredDate": "1983-06-13",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Corporis obcaecati c",
+      "status": "pending"
+    },
+    {
       "id": "ee3f",
       "userId": "1f64",
       "wasteType": "plastic",
@@ -191,13 +219,6 @@
       "desiredTimeSlot": "09:00-12:00",
       "notes": "Sint autem do quasi ",
       "status": "pending"
-    }
-  ],
-  "points": [
-    {
-      "id": 1,
-      "userId": 1,
-      "points": 100
     }
   ]
 }

@@ -11,6 +11,7 @@ import { User } from '../models/user.mode';
 export class AuthService {
 
 
+
  private apiUrl = 'http://localhost:3000/';
 
   http = inject(HttpClient);
@@ -26,6 +27,7 @@ export class AuthService {
           switchMap(hashedPassword => {
             const userToCreate = {
               ...user,
+              points: 0,
               role: 'individual',
               password: hashedPassword
             };
@@ -189,6 +191,8 @@ export class AuthService {
         return throwError(() => new Error('Failed to delete user'));
       }));
   }
+
+
 
 
 

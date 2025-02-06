@@ -23,6 +23,13 @@ export class CollectorComponent {
   collectionRequests!: Observable<CollectionRequest[]>;
   openDropdownId: string | null = null;
 
+  private pointsMap: { [key: string]: number } = {
+    'plastic': 2,
+    'glass': 1,
+    'paper': 1,
+    'metal': 5
+  };
+
   constructor(
     private collectionRequestService: CollectionRequestService,
     private authService: AuthService
@@ -48,7 +55,7 @@ export class CollectorComponent {
         console.error('Error fetching collection requests:', error);
       }
     });
-    
+
   }
   getStatusClass(status: string): string {
     const statusClasses: { [key: string]: string } = {
@@ -59,6 +66,9 @@ export class CollectorComponent {
     };
     return statusClasses[status] || statusClasses['default'];
   }
+
+
+
 
   updateStatus(request: CollectionRequest, newStatus: string, event: Event) {
     event.stopPropagation();
@@ -71,13 +81,36 @@ export class CollectorComponent {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonText: 'Yes, update status!',
     }).then((result) => {
       if (result.isConfirmed) {
         const updatedRequest = { ...request, status: newStatus };
-        this.collectionRequestService
-          .updateCollectionRequest(request.id!, updatedRequest)
-          .subscribe({
+
+        if (newStatus === 'accepted' || newStatus === 'completed') {
+          const pointsEarned = this.calculatePoints(request);
+
+          this.collectionRequestService.addPoints(request.userId, pointsEarned).pipe(
+            switchMap(() => this.collectionRequestService.updateCollectionRequest(request.id!, updatedRequest))
+          ).subscribe({
+            next: () => {
+              Swal.fire({
+                title: 'Success!',
+                text: `Request status updated to ${newStatus}. Earned ${pointsEarned} points!`,
+                icon: 'success',
+              });
+              this.loadCollections();
+            },
+            error: (error) => {
+              console.error('Error updating status or points:', error);
+              Swal.fire({
+                title: 'Error',
+                text: 'Failed to update status or points. Please try again.',
+                icon: 'error',
+              });
+            },
+          });
+        } else {
+          this.collectionRequestService.updateCollectionRequest(request.id!, updatedRequest).subscribe({
             next: () => {
               Swal.fire({
                 title: 'Success!',
@@ -95,12 +128,19 @@ export class CollectorComponent {
               });
             },
           });
+        }
       }
     });
   }
 
+
   toggleDropdown(requestId: string, event: Event) {
     event.stopPropagation();
     this.openDropdownId = this.openDropdownId === requestId ? null : requestId;
+  }
+
+  private calculatePoints(request: CollectionRequest): number {
+    const wasteTypePointRate = this.pointsMap[request.wasteType.toLowerCase()] || 0;
+    return wasteTypePointRate * request.estimatedWeight;
   }
 }

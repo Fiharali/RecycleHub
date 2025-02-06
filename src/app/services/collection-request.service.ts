@@ -11,12 +11,13 @@ export class CollectionRequestService {
 
 
 
-  private apiUrl = 'http://localhost:3000/collectionRequests';
+
+  private apiUrl = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) { }
 
   getUserCollectionRequests(userId: number): Observable<CollectionRequest[]> {
-    return this.http.get<CollectionRequest[]>(`${this.apiUrl}?userId=${userId}`);
+    return this.http.get<CollectionRequest[]>(`${this.apiUrl}collectionRequests?userId=${userId}`);
   }
 
 
@@ -25,20 +26,26 @@ export class CollectionRequestService {
   }
 
   getCollectionRequestsWithStatusPending(adress:string): Observable<CollectionRequest[]> {
-    return this.http.get<CollectionRequest[]>(`${this.apiUrl}?status=pending&collectionAddress=${adress}`);
+    return this.http.get<CollectionRequest[]>(`${this.apiUrl}collectionRequests?status=pending&collectionAddress=${adress}`);
   }
   addCollectionRequest(request: CollectionRequest): Observable<CollectionRequest> {
-    return this.http.post<CollectionRequest>(this.apiUrl, request );
+    return this.http.post<CollectionRequest>(this.apiUrl+"collectionRequests", request );
   }
 
 
   deleteCollectionRequest(id: number|string) {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http.delete(`${this.apiUrl}collectionRequests/${id}`);
   }
 
 
   updateCollectionRequest(id: string | undefined, updatedRequest: { status: string; id?: string; userId: string | number; wasteType: string; photos?: [string, ...string[]]; estimatedWeight: number; collectionAddress: string; desiredDate: string; desiredTimeSlot: string; notes?: string; }) {
-    return this.http.put(`${this.apiUrl}/${id}`, updatedRequest);
+    return this.http.put(`${this.apiUrl}collectionRequests/${id}`, updatedRequest);
+  }
+
+
+
+  addPoints(userId: string | number, pointsEarned: number): Observable<any> {
+    return this.http.patch(`${this.apiUrl}points?usersId=${userId}`, { points: pointsEarned });
   }
 
 }
