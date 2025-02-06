@@ -28,7 +28,7 @@ export class CollectionRequestService {
     return this.http.get<CollectionRequest[]>(`${this.apiUrl}?status=pending&collectionAddress=${adress}`);
   }
   addCollectionRequest(request: CollectionRequest): Observable<CollectionRequest> {
-    return this.http.post<CollectionRequest>(this.apiUrl, request);
+    return this.http.post<CollectionRequest>(this.apiUrl, request );
   }
 
 
