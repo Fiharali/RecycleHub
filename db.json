@@ -1,13 +1,14 @@
 {
   "users": [
     {
-      "email": "menygow@mailinator.com",
+      "email": "fiharali@gmail.com",
       "password": "$2a$10$BLvEeqNUHIovqirqihY7EeNQk9kslb57zhmjtbtjuGAK/8Y1tHD.O",
       "firstName": "Quaerat dolores non AA",
       "lastName": "Dolorum et do odio q",
       "address": "Magnam vel distincti",
       "phoneNumber": "5252778269",
       "dateOfBirth": "2024-11-22",
+      "role": "collector",
       "id": "f228"
     },
     {
@@ -39,7 +40,7 @@
       "userId": "683",
       "wasteType": "metal",
       "photos": [
-        "Esse dolores molliti"
+
       ],
       "estimatedWeight": 7,
       "collectionAddress": "Quidem illum suscip",
@@ -52,9 +53,7 @@
       "id": "f036",
       "userId": "6b683",
       "wasteType": "plastic, paper",
-      "photos": [
-        "Voluptatibus officii"
-      ],
+      "photos": [],
       "estimatedWeight": 80,
       "collectionAddress": "Impedit minus aliqu",
       "desiredDate": "2023-05-13",

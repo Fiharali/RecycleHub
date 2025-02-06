@@ -1,0 +1,62 @@
+<app-navbar />
+<app-sidebar />
+<div class="p-4 sm:ml-64">
+  <div class="p-4 mt-14">
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8 p-6">
+          <div
+            *ngFor="let request of collectionRequests | async"
+            class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:shadow-2xl"
+          >
+            <!-- Image Section -->
+            <div class="relative h-48 mb-6 rounded-lg overflow-hidden">
+              <img
+                [src]="request?.photos?.[0] || defaultImage"
+                [alt]="'Collection Request ' + request.id"
+                class="w-full h-full object-cover"
+              />
+
+            </div>
+
+           
+
+
+            <!-- Content -->
+            <div class="space-y-4">
+              <h3 class="text-xl font-semibold text-green-900">
+                {{ request.wasteType | titlecase }} Collection
+              </h3>
+
+              <div class="text-gray-600">
+                <p class="flex items-center gap-2">
+                  <!-- SVG Icon -->
+                  {{ request.estimatedWeight }} kg
+                </p>
+
+                <p class="flex items-center gap-2">
+                  <!-- SVG Icon -->
+                  {{ request.collectionAddress }}
+                </p>
+
+                <p class="flex items-center gap-2">
+                  <!-- SVG Icon -->
+                  {{ request.desiredDate | date : "mediumDate" }}
+                </p>
+
+                <p class="flex items-center gap-2">
+                  <!-- SVG Icon -->
+                  {{ request.desiredTimeSlot }}
+                </p>
+              </div>
+
+              <p class="text-gray-500 italic" *ngIf="request.notes">
+                "{{ request.notes }}"
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -7,6 +7,8 @@ import { authGuard } from './guards/auth.guard';
 import { redirectIfAuthenticateGuard } from './guards/redirect-if-authenticate.guard';
 import { CollectionRequestComponent } from './components/collection-request/collection-request.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CollectorComponent } from './components/collector/collector.component';
+import { collectorGuard } from './guards/collector.guard';
 
 export const routes: Routes = [
 
@@ -18,6 +20,8 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent , canActivate: [authGuard]},
   { path: 'home', component: HomeComponent , canActivate: [authGuard]},
   { path: 'collection-request', component: CollectionRequestComponent , canActivate: [authGuard]},
-  { path: 'profile', component: ProfileComponent, canActivate: [authGuard]}
+  { path: 'profile', component: ProfileComponent, canActivate: [authGuard]},
+
+  { path: 'collector', component: CollectorComponent, canActivate: [authGuard , collectorGuard]}
 
 ];

@@ -23,6 +23,9 @@ export class CollectionRequestService {
     return this.http.get<CollectionRequest[]>(`${this.apiUrl}`);
   }
 
+  getCollectionRequestsWithStatusPending(): Observable<CollectionRequest[]> {
+    return this.http.get<CollectionRequest[]>(`${this.apiUrl}?status=pending`);
+  }
   addCollectionRequest(request: CollectionRequest): Observable<CollectionRequest> {
     return this.http.post<CollectionRequest>(this.apiUrl, request);
   }
