@@ -190,4 +190,21 @@ export class AuthService {
       }));
   }
 
+
+
+  isCollector(): boolean {
+
+    const userString = localStorage.getItem('currentUser');
+    if (!userString) {
+      return false;
+    }
+    try {
+      const user: User = JSON.parse(userString);
+      return user.role ==='collector';
+    } catch (error) {
+      console.error('Error parsing user from localStorage:', error);
+      return false;
+    }
+  }
+
 }

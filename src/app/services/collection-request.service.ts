@@ -10,6 +10,7 @@ import { CollectionRequest } from '../models/collection-request.model';
 export class CollectionRequestService {
 
 
+
   private apiUrl = 'http://localhost:3000/collectionRequests';
 
   constructor(private http: HttpClient) { }
@@ -35,5 +36,9 @@ export class CollectionRequestService {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
+
+  updateCollectionRequest(id: string | undefined, updatedRequest: { status: string; id?: string; userId: string | number; wasteType: string; photos?: [string, ...string[]]; estimatedWeight: number; collectionAddress: string; desiredDate: string; desiredTimeSlot: string; notes?: string; }) {
+    return this.http.put(`${this.apiUrl}/${id}`, updatedRequest);
+  }
 
 }

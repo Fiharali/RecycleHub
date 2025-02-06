@@ -15,4 +15,9 @@ export class SidebarComponent {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+
+  isCollector(): boolean {
+    return this.authService.isCollector();
+  }
 }

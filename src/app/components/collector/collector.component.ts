@@ -4,46 +4,89 @@ import { Observable } from 'rxjs';
 import { CollectionRequest } from '../../models/collection-request.model';
 import { CollectionRequestService } from '../../services/collection-request.service';
 import { AuthService } from '../../services/auth.service';
-import { NavbarComponent } from "../../layout/navbar/navbar.component";
-import { SidebarComponent } from "../../layout/sidebar/sidebar.component";
+import { NavbarComponent } from '../../layout/navbar/navbar.component';
+import { SidebarComponent } from '../../layout/sidebar/sidebar.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-collector',
   imports: [CommonModule, NavbarComponent, SidebarComponent],
   templateUrl: './collector.component.html',
-  styleUrl: './collector.component.css'
+  styleUrl: './collector.component.css',
 })
 export class CollectorComponent {
+  statusOptions = ['pending', 'accepted', 'rejected', 'completed'];
 
+  defaultImage =
+    'https://plus.unsplash.com/premium_photo-1683133531613-6a7db8847c72?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
-   defaultImage =
-      'https://plus.unsplash.com/premium_photo-1683133531613-6a7db8847c72?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+  collectionRequests!: Observable<CollectionRequest[]>;
+  openDropdownId: string | null = null;
 
-    collectionRequests!: Observable<CollectionRequest[]>;
+  constructor(
+    private collectionRequestService: CollectionRequestService,
+    private authService: AuthService
+  ) {
+    this.loadCollections();
+  }
 
-    constructor(
-      private collectionRequestService: CollectionRequestService,
-      private authService: AuthService
-    ) {
-      this.loadCollections();
+  loadCollections() {
+    this.collectionRequests =
+      this.collectionRequestService.getCollectionRequestsWithStatusPending();
+  }
 
-    }
+  getStatusClass(status: string): string {
+    const statusClasses: { [key: string]: string } = {
+      pending: 'bg-yellow-100 text-yellow-800',
+      completed: 'bg-green-100 text-green-800',
+      cancelled: 'bg-red-100 text-red-800',
+      default: 'bg-gray-100 text-gray-800',
+    };
+    return statusClasses[status] || statusClasses['default'];
+  }
 
-    loadCollections() {
+  updateStatus(request: CollectionRequest, newStatus: string, event: Event) {
+    event.stopPropagation();
+    this.openDropdownId = null;
 
-         this.collectionRequests = this.collectionRequestService.getCollectionRequestsWithStatusPending();
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const updatedRequest = { ...request, status: newStatus };
+        this.collectionRequestService
+          .updateCollectionRequest(request.id!, updatedRequest)
+          .subscribe({
+            next: () => {
+              Swal.fire({
+                title: 'Success!',
+                text: `Request status updated to ${newStatus}`,
+                icon: 'success',
+              });
+              this.collectionRequests =
+                this.collectionRequestService.getCollectionRequestsWithStatusPending();
+            },
+            error: (error) => {
+              console.error('Error updating status:', error);
+              Swal.fire({
+                title: 'Error',
+                text: 'Failed to update status. Please try again.',
+                icon: 'error',
+              });
+            },
+          });
+      }
+    });
+  }
 
-
-
-    getStatusClass(status: string): string {
-      const statusClasses: { [key: string]: string } = {
-        pending: 'bg-yellow-100 text-yellow-800',
-        completed: 'bg-green-100 text-green-800',
-        cancelled: 'bg-red-100 text-red-800',
-        default: 'bg-gray-100 text-gray-800',
-      };
-      return statusClasses[status] || statusClasses['default'];
-    }
-
+  toggleDropdown(requestId: string, event: Event) {
+    event.stopPropagation();
+    this.openDropdownId = this.openDropdownId === requestId ? null : requestId;
+  }
 }
