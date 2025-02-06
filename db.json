@@ -2,27 +2,6 @@
   "users": [
     {
       "email": "menygow@mailinator.com",
-      "firstName": "Quaerat dolores non AA",
-      "lastName": "Dolorum et do odio q",
-      "password": "$2a$10$BLvEeqNUHIovqirqihY7EeNQk9kslb57zhmjtbtjuGAK/8Y1tHD.O",
-      "address": "Magnam vel distincti",
-      "phoneNumber": "5252778269",
-      "dateOfBirth": "2024-11-22",
-      "id": "6b83"
-    },
-    {
-      "email": "kuvawoly@mailinator.com",
-      "firstName": "Doloremque distincti",
-      "lastName": "Error alias sunt in ",
-      "address": "Totam dolor ex expli",
-      "phoneNumber": "8282822222",
-      "dateOfBirth": "1999-10-08",
-      "password": "$2a$10$BLvEeqNUHIovqirqihY7EeNQk9kslb57zhmjtbtjuGAK/8Y1tHD.O",
-      "role": "individual",
-      "id": "5775"
-    },
-    {
-      "email": "menygow@mailinator.com",
       "password": "$2a$10$BLvEeqNUHIovqirqihY7EeNQk9kslb57zhmjtbtjuGAK/8Y1tHD.O",
       "firstName": "Quaerat dolores non AA",
       "lastName": "Dolorum et do odio q",
@@ -41,12 +20,23 @@
       "phoneNumber": "1234567890",
       "dateOfBirth": "1994-10-05",
       "role": "individual"
+    },
+    {
+      "id": "11db",
+      "email": "motu@mailinator.com",
+      "password": "$2a$10$VyhDAxsTZPI.zEAFATplXeu/FxJho0yUTKW/zLABrCPtdu6Vjntlm",
+      "firstName": "Voluptatem corporis ",
+      "lastName": "Praesentium adipisic",
+      "address": "Fuga Ea nobis sunt ",
+      "phoneNumber": "5452662778",
+      "dateOfBirth": "2001-11-06",
+      "role": "individual"
     }
   ],
   "collectionRequests": [
     {
       "id": "6b831",
-      "userId": "6b83",
+      "userId": null,
       "wasteType": "glass",
       "photos": [],
       "estimatedWeight": 88,
@@ -58,7 +48,7 @@
     },
     {
       "id": "02b7",
-      "userId": "6b83",
+      "userId": null,
       "wasteType": "plastic",
       "photos": [
         "Non labore non nisi "
@@ -100,7 +90,7 @@
     },
     {
       "id": "249e",
-      "userId": "5775",
+      "userId": null,
       "wasteType": "glass",
       "photos": [],
       "estimatedWeight": 4,
@@ -112,7 +102,7 @@
     },
     {
       "id": "ae1f",
-      "userId": "5775",
+      "userId": null,
       "wasteType": "glass",
       "photos": [],
       "estimatedWeight": 25,
@@ -124,7 +114,7 @@
     },
     {
       "id": "f968",
-      "userId": "5775",
+      "userId": null,
       "wasteType": "metal",
       "photos": [
         "https://imgv3.fotor.com/images/slider-image/A-clear-close-up-photo-of-a-woman.jpg"

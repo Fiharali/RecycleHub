@@ -7,6 +7,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { AuthService } from '../../services/auth.service';
 import { CollectionRequestService } from '../../services/collection-request.service';
 import { RequestStatus } from '../../models/request-status.enum';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -139,6 +140,31 @@ export class HomeComponent {
 
 
 deleteRequest( id: number) {
+
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+
     console.log(id);
+    this.collectionRequestService.deleteCollectionRequest(id).subscribe(() => {
+    console.log('deleted');
+    });
+
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success"
+      });
+    }
+  });
+
+
   }
 }

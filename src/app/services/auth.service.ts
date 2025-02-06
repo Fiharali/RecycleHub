@@ -9,6 +9,8 @@ import { User } from '../models/user.mode';
   providedIn: 'root'
 })
 export class AuthService {
+
+
  private apiUrl = 'http://localhost:3000/';
 
   http = inject(HttpClient);
@@ -170,6 +172,22 @@ export class AuthService {
         );
       })
     );
+  }
+
+
+  deleteUser(id: string): Observable<any> {
+
+    this.logout();
+    return this.http.delete<any>(`${this.apiUrl}users/${id}`).pipe(
+
+      map(() => {
+        this.logout();
+        return true;
+      }),
+      catchError(error => {
+        console.error('Delete user error', error);
+        return throwError(() => new Error('Failed to delete user'));
+      }));
   }
 
 }

@@ -9,6 +9,7 @@ import { CollectionRequest } from '../models/collection-request.model';
 })
 export class CollectionRequestService {
 
+
   private apiUrl = 'http://localhost:3000/collectionRequests';
 
   constructor(private http: HttpClient) { }
@@ -17,7 +18,7 @@ export class CollectionRequestService {
     return this.http.get<CollectionRequest[]>(`${this.apiUrl}?userId=${userId}`);
   }
 
-  
+
   getCollectionRequests(): Observable<CollectionRequest[]> {
     return this.http.get<CollectionRequest[]>(`${this.apiUrl}`);
   }
@@ -26,6 +27,10 @@ export class CollectionRequestService {
     return this.http.post<CollectionRequest>(this.apiUrl, request);
   }
 
+
+  deleteCollectionRequest(id: number) {
+    return this.http.delete(`${this.apiUrl}+?id=${id}`);
+  }
 
 
 }

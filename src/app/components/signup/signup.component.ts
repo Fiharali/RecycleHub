@@ -43,6 +43,7 @@ export class SignupComponent implements OnInit {
       next: (response) => {
      console.log('Signup successful', response);
      this.signupForm.reset();
+     this.router.navigate(['/collection-request']);
       },
       error: (error) => {
         if (error.message === 'Email already exists') {

@@ -8,6 +8,7 @@ import { SidebarComponent } from "../../layout/sidebar/sidebar.component";
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 import { User } from '../../models/user.mode';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +17,7 @@ import { User } from '../../models/user.mode';
   imports: [NavbarComponent, SidebarComponent,CommonModule, ReactiveFormsModule]
 })
 export class ProfileComponent implements OnInit {
+
   profileForm!: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
@@ -103,4 +105,51 @@ export class ProfileComponent implements OnInit {
       }
     });
   }
+
+
+  onDelete() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this account!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.authService.getCurrentUser().pipe(
+          switchMap(user => {
+            if (!user) {
+              this.router.navigate(['/login']);
+              throw new Error('No user found');
+            }
+            return this.authService.deleteUser(user.id);
+          })
+        ).subscribe({
+          next: () => {
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'Your account has been deleted.',
+              icon: 'success'
+            });
+            this.authService.logout();
+            this.router.navigate(['/login']);
+          },
+          error: (error) => {
+            console.error('Error:', error);
+            Swal.fire({
+              title: 'Error',
+              text: 'Failed to delete your account. Please try again.',
+              icon: 'error'
+            });
+
+            if (error.message === 'No user found') {
+              this.router.navigate(['/login']);
+            }
+          }
+        });
+      }
+    });
+  }
+
 }
