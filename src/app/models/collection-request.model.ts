@@ -1,6 +1,6 @@
 export interface CollectionRequest {
-  id?: number;
-  userId: number;
+  id?: string;
+  userId: string|number;
   wasteType: string; // 'plastic', 'glass', 'paper', 'metal'
   photos?: [string, ...string[]];
   estimatedWeight: number;

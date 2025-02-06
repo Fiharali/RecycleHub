@@ -1,13 +1,13 @@
 <app-navbar />
 <app-sidebar />
 <div class="p-4 sm:ml-64">
-  <div class="p-4 mt-14">
-    <section class="py-20 bg-white">
+  <div class="p-4 mt-5">
+    <section class=" bg-white">
       <div class="container mx-auto px-4">
         <div class="grid md:grid-cols-3 gap-8 p-6">
           <div
             *ngFor="let request of collectionRequests | async"
-            class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:shadow-2xl"
+            class="bg-white rounded-xl shadow-xs p-6 transform transition-all duration-300 hover:shadow-md"
           >
             <!-- Image Section -->
             <div class="relative h-48 mb-6 rounded-lg overflow-hidden">
@@ -19,7 +19,7 @@
 
             </div>
 
-           
+
 
 
             <!-- Content -->

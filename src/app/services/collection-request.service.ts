@@ -31,7 +31,7 @@ export class CollectionRequestService {
   }
 
 
-  deleteCollectionRequest(id: number) {
+  deleteCollectionRequest(id: number|string) {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 

@@ -32,6 +32,17 @@
       "phoneNumber": "5452662778",
       "dateOfBirth": "2001-11-06",
       "role": "individual"
+    },
+    {
+      "id": "1f64",
+      "email": "ruxo@mailinator.com",
+      "password": "$2a$10$TTkCABt2U3WqYbSClrgOH.CWY3LyS93YHeIH5P7uERdwpwu2Srq2i",
+      "firstName": "Ullamco impedit tem",
+      "lastName": "Elit nisi aliqua O",
+      "address": "Ut sit modi quis fu",
+      "phoneNumber": "4567877722",
+      "dateOfBirth": "1999-07-16",
+      "role": "individual"
     }
   ],
   "collectionRequests": [
@@ -39,9 +50,7 @@
       "id": "cdb8",
       "userId": "683",
       "wasteType": "metal",
-      "photos": [
-
-      ],
+      "photos": [],
       "estimatedWeight": 7,
       "collectionAddress": "Quidem illum suscip",
       "desiredDate": "2015-07-21",
@@ -63,7 +72,7 @@
     },
     {
       "id": "249e",
-      "userId": null,
+      "userId": "6b683",
       "wasteType": "glass",
       "photos": [],
       "estimatedWeight": 4,
@@ -75,7 +84,7 @@
     },
     {
       "id": "f968",
-      "userId": null,
+      "userId": 5775,
       "wasteType": "metal",
       "photos": [
         "https://imgv3.fotor.com/images/slider-image/A-clear-close-up-photo-of-a-woman.jpg"
@@ -97,6 +106,93 @@
       "desiredDate": "2010-12-04",
       "desiredTimeSlot": "09:00-12:00",
       "notes": "Aut cumque nihil ut ",
+      "status": "pending"
+    },
+    {
+      "id": "8bdd",
+      "userId": "1f64",
+      "wasteType": "glass",
+      "photos": [],
+      "estimatedWeight": 4,
+      "collectionAddress": "Dolor aspernatur in ",
+      "desiredDate": "2025-01-07",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Ipsum nulla nisi asp",
+      "status": "pending"
+    },
+
+
+
+    {
+      "id": "960d",
+      "userId": "1f64",
+      "wasteType": "paper",
+      "photos": [],
+      "estimatedWeight": 78,
+      "collectionAddress": "Tempora in eum eu vo",
+      "desiredDate": "1992-08-24",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Sapiente est enim ut",
+      "status": "pending"
+    },
+    {
+      "id": "02ec",
+      "userId": "1f64",
+      "wasteType": "glass",
+      "photos": [],
+      "estimatedWeight": 7,
+      "collectionAddress": "Placeat et rerum do",
+      "desiredDate": "2012-04-27",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Similique do ratione",
+      "status": "pending"
+    },
+    {
+      "id": "e965",
+      "userId": "1f64",
+      "wasteType": "metal",
+      "photos": [],
+      "estimatedWeight": 14,
+      "collectionAddress": "Commodo in quis dolo",
+      "desiredDate": "1983-06-13",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Corporis obcaecati c",
+      "status": "pending"
+    },
+    {
+      "id": "ee3f",
+      "userId": "1f64",
+      "wasteType": "plastic",
+      "photos": [],
+      "estimatedWeight": 63,
+      "collectionAddress": "Dolorem incidunt as",
+      "desiredDate": "1997-09-13",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Praesentium quia in ",
+      "status": "pending"
+    },
+    {
+      "id": "0a11",
+      "userId": "1f64",
+      "wasteType": "metal",
+      "photos": [],
+      "estimatedWeight": 47,
+      "collectionAddress": "Quis incidunt vel r",
+      "desiredDate": "1984-02-11",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Facere minim natus o",
+      "status": "pending"
+    },
+    {
+      "id": "4216",
+      "userId": "1f64",
+      "wasteType": "paper",
+      "photos": [],
+      "estimatedWeight": 86,
+      "collectionAddress": "Quas dignissimos omn",
+      "desiredDate": "2017-09-21",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Sint autem do quasi ",
       "status": "pending"
     }
   ],

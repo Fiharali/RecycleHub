@@ -145,7 +145,7 @@ export class HomeComponent {
     return statusClasses[status] || statusClasses['default'];
   }
 
-  deleteRequest(id: number) {
+  deleteRequest(id: string) {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",

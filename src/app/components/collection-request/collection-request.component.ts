@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormArray,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { CollectionRequest } from '../../models/collection-request.model';
 import { CollectionRequestService } from '../../services/collection-request.service';
 import { Router } from '@angular/router';
@@ -7,15 +13,19 @@ import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { firstValueFrom } from 'rxjs';
 import Swal from 'sweetalert2';
-import { SidebarComponent } from "../../layout/sidebar/sidebar.component";
-import { NavbarComponent } from "../../layout/navbar/navbar.component";
-
+import { SidebarComponent } from '../../layout/sidebar/sidebar.component';
+import { NavbarComponent } from '../../layout/navbar/navbar.component';
 
 @Component({
   selector: 'app-collection-request',
   templateUrl: './collection-request.component.html',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, SidebarComponent, NavbarComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    SidebarComponent,
+    NavbarComponent,
+  ],
 })
 export class CollectionRequestComponent implements OnInit {
   collectionForm!: FormGroup;
@@ -40,10 +50,10 @@ export class CollectionRequestComponent implements OnInit {
 
   private initializeForm(): void {
     this.collectionForm = new FormGroup({
-      wasteTypes: new FormArray([], [
-        Validators.required,
-        this.validateWasteTypes.bind(this),
-      ]),
+      wasteTypes: new FormArray(
+        [],
+        [Validators.required, this.validateWasteTypes.bind(this)]
+      ),
       photos: new FormArray([]),
       estimatedWeight: new FormControl('', [
         Validators.required,
@@ -108,25 +118,29 @@ export class CollectionRequestComponent implements OnInit {
 
   private async checkPendingRequests(): Promise<void> {
     try {
-      const currentUserId = Number((await firstValueFrom(this.authService.getCurrentUser()))?.id ?? 0);
+      const currentUserId = Number(
+        (await firstValueFrom(this.authService.getCurrentUser()))?.id ?? 0
+      );
       const requests = await firstValueFrom(
         this.collectionService.getCollectionRequests()
       );
 
       const pendingRequests = requests.filter(
         (request: CollectionRequest) =>
-          request.userId === currentUserId && request.status === 'pending'
+          request.userId == currentUserId && request.status === 'pending'
       );
 
       this.hasReachedMaxRequests = pendingRequests.length >= this.maxRequests;
 
       if (this.hasReachedMaxRequests) {
-        this.errorMessage = 'You have reached the maximum limit of 3 pending requests.';
+        this.errorMessage =
+          'You have reached the maximum limit of 3 pending requests.';
         this.collectionForm.disable();
       }
     } catch (error) {
       console.error('Error checking pending requests:', error);
-      this.errorMessage = 'Error checking pending requests. Please try again later.';
+      this.errorMessage =
+        'Error checking pending requests. Please try again later.';
     }
   }
 
@@ -136,38 +150,76 @@ export class CollectionRequestComponent implements OnInit {
       return;
     }
 
+    try {
+      const currentUser = await firstValueFrom(
+        this.authService.getCurrentUser()
+      );
 
-    await this.checkPendingRequests();
-    if (this.hasReachedMaxRequests) {
-      return;
-    }
-
-    const request: CollectionRequest = {
-      userId: Number((await firstValueFrom(this.authService.getCurrentUser()))?.id ?? 0),
-      wasteType: this.wasteTypes.value.join(', '),
-      photos: this.photos.value.filter((photo: string) => photo),
-      estimatedWeight: this.collectionForm.value.estimatedWeight,
-      collectionAddress: this.collectionForm.value.collectionAddress,
-      desiredDate: this.collectionForm.value.desiredDate,
-      desiredTimeSlot: this.collectionForm.value.desiredTimeSlot,
-      notes: this.collectionForm.value.notes,
-      status: 'pending',
-    };
-
-    this.collectionService.addCollectionRequest(request).subscribe({
-      next: () => {
+      if (!currentUser || !currentUser.id) {
         Swal.fire({
-          title: "Good job!",
-          text: "You clicked the button!",
-          icon: "success"
+          title: 'Error',
+          text: 'You must be logged in to submit a collection request',
+          icon: 'error',
         });
+        this.router.navigate(['/login']);
+        return;
+      }
 
-        this.collectionForm.reset();
-      },
-      error: (error) => {
-        this.errorMessage = 'Submission failed. Please try again.';
-        console.error('Collection Request error', error);
-      },
-    });
+      const requests = await firstValueFrom(
+        this.collectionService.getCollectionRequests()
+      );
+      const pendingRequests = requests.filter(
+        (request: CollectionRequest) =>
+          request.userId === currentUser.id && request.status === 'pending'
+      );
+
+      if (pendingRequests.length >= this.maxRequests) {
+        Swal.fire({
+          title: 'Error',
+          text: 'You have reached the maximum limit of 3 pending requests.',
+          icon: 'error',
+        });
+        return;
+      }
+
+      const request: CollectionRequest = {
+        userId: currentUser.id,
+        wasteType: this.wasteTypes.value.join(', '),
+        photos: this.photos.value.filter((photo: string) => photo),
+        estimatedWeight: this.collectionForm.value.estimatedWeight,
+        collectionAddress: this.collectionForm.value.collectionAddress,
+        desiredDate: this.collectionForm.value.desiredDate,
+        desiredTimeSlot: this.collectionForm.value.desiredTimeSlot,
+        notes: this.collectionForm.value.notes,
+        status: 'pending',
+      };
+
+      this.collectionService.addCollectionRequest(request).subscribe({
+        next: () => {
+          Swal.fire({
+            title: 'Success!',
+            text: 'Collection request submitted successfully!',
+            icon: 'success',
+          });
+          this.collectionForm.reset();
+        },
+        error: (error) => {
+          this.errorMessage = 'Submission failed. Please try again.';
+          console.error('Collection Request error', error);
+          Swal.fire({
+            title: 'Error',
+            text: 'Failed to submit collection request. Please try again.',
+            icon: 'error',
+          });
+        },
+      });
+    } catch (error) {
+      console.error('Error submitting collection request:', error);
+      Swal.fire({
+        title: 'Error',
+        text: 'An unexpected error occurred. Please try again.',
+        icon: 'error',
+      });
+    }
   }
 }
