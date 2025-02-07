@@ -9,6 +9,7 @@ import { CollectionRequestComponent } from './components/collection-request/coll
 import { ProfileComponent } from './components/profile/profile.component';
 import { CollectorComponent } from './components/collector/collector.component';
 import { collectorGuard } from './guards/collector.guard';
+import { PointsComponent } from './components/points/points.component';
 
 export const routes: Routes = [
 
@@ -17,10 +18,13 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent  , canActivate: [redirectIfAuthenticateGuard] },
   { path: 'signup', component: SignupComponent , canActivate: [redirectIfAuthenticateGuard] },
 
+
+  { path: 'points', component: PointsComponent, canActivate: [authGuard]},
   { path: 'dashboard', component: DashboardComponent , canActivate: [authGuard]},
   { path: 'home', component: HomeComponent , canActivate: [authGuard]},
   { path: 'collection-request', component: CollectionRequestComponent , canActivate: [authGuard]},
   { path: 'profile', component: ProfileComponent, canActivate: [authGuard]},
+
 
   { path: 'collector', component: CollectorComponent, canActivate: [authGuard , collectorGuard]}
 

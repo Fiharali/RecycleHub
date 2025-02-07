@@ -71,6 +71,18 @@
       "role": "individual",
       "points": 0,
       "id": "ef55"
+    },
+    {
+      "id": "df10",
+      "email": "demewovig@mailinator.com",
+      "password": "$2a$10$7//aqEMOqra4ZIiQTUukKeddOWO9Z28NBy96tIiPOoYWnRMKOK6lq",
+      "firstName": "Consequatur laudanti",
+      "lastName": "Dolore autem aut sin",
+      "address": "Quia dolorem ipsum r",
+      "phoneNumber": "2345678999",
+      "dateOfBirth": "2024-12-13",
+      "points": 860,
+      "role": "individual"
     }
   ],
   "collectionRequests": [
