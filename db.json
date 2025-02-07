@@ -1,16 +1,28 @@
 {
   "users": [
     {
+      "id": "f228",
       "email": "fiharali@gmail.com",
-      "password": "$2a$10$BLvEeqNUHIovqirqihY7EeNQk9kslb57zhmjtbtjuGAK/8Y1tHD.O",
-      "firstName": "Quaerat dolores non AA",
-      "lastName": "Dolorum et do odio q",
-      "address": "casa",
-      "phoneNumber": "5252778269",
-      "dateOfBirth": "2024-11-22",
-      "role": "collector",
+      "password": "$2a$10$TTkCABt2U3WqYbSClrgOH.CWY3LyS93YHeIH5P7uERdwpwu2Srq2i",
+      "firstName": "Ullamco impedit tem",
+      "lastName": "Elit nisi aliqua O",
+      "address": "tanger",
+      "phoneNumber": "4567877722",
       "points": 0,
-      "id": "f228"
+      "dateOfBirth": "1999-07-16",
+      "role": "collector"
+    },
+    {
+      "id": "f228",
+      "email": "ruxo@mailinator.com",
+      "password": "$2a$10$TTkCABt2U3WqYbSClrgOH.CWY3LyS93YHeIH5P7uERdwpwu2Srq2i",
+      "firstName": "Ullamco impedit tem",
+      "lastName": "Elit nisi aliqua O",
+      "address": "tanger",
+      "phoneNumber": "4567877722",
+      "points": 70,
+      "dateOfBirth": "1999-07-16",
+      "role": "individual"
     },
     {
       "id": "6b1c",
@@ -44,7 +56,7 @@
       "lastName": "Elit nisi aliqua O",
       "address": "tanger",
       "phoneNumber": "4567877722",
-      "points": 0,
+      "points": 90,
       "dateOfBirth": "1999-07-16",
       "role": "individual"
     },
@@ -96,7 +108,7 @@
       "desiredDate": "2018-06-13",
       "desiredTimeSlot": "09:00-12:00",
       "notes": "Et dolor excepteur a",
-      "status": "completed"
+      "status": "pending"
     },
     {
       "id": "f968",
@@ -146,7 +158,7 @@
       "desiredDate": "1992-08-24",
       "desiredTimeSlot": "09:00-12:00",
       "notes": "Sapiente est enim ut",
-      "status": "completed"
+      "status": "pending"
     },
     {
       "id": "02ec",
@@ -182,7 +194,7 @@
       "desiredDate": "1983-06-13",
       "desiredTimeSlot": "09:00-12:00",
       "notes": "Corporis obcaecati c",
-      "status": "pending"
+      "status": "accepted"
     },
     {
       "id": "ee3f",
@@ -194,7 +206,7 @@
       "desiredDate": "1997-09-13",
       "desiredTimeSlot": "09:00-12:00",
       "notes": "Praesentium quia in ",
-      "status": "pending"
+      "status": "accepted"
     },
     {
       "id": "0a11",
@@ -206,7 +218,7 @@
       "desiredDate": "1984-02-11",
       "desiredTimeSlot": "09:00-12:00",
       "notes": "Facere minim natus o",
-      "status": "pending"
+      "status": "accepted"
     },
     {
       "id": "4216",
@@ -218,7 +230,7 @@
       "desiredDate": "2017-09-21",
       "desiredTimeSlot": "09:00-12:00",
       "notes": "Sint autem do quasi ",
-      "status": "pending"
+      "status": "completed"
     }
   ]
 }

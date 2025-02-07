@@ -3,12 +3,13 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { catchError, map, Observable, of, switchMap, throwError } from 'rxjs';
 import * as bcrypt from 'bcryptjs';
-import { User } from '../models/user.mode';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
 
 
 
@@ -176,6 +177,27 @@ export class AuthService {
     );
   }
 
+
+  updateUserAfterCalcul(user: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}users/${user.id}`, user).pipe(
+      catchError(error => {
+        console.error('Update user error', error);
+        return throwError(() => new Error('Failed to update user'));
+      })
+    );
+  }
+
+  getUserById(userId: string | number): Observable<any> {
+
+    return this.http.get<any[]>(`${this.apiUrl}users?id=${userId}`).pipe(
+      map(users => users.length > 0 ? users[0] : null),
+      catchError(error => {
+        console.error('Error fetching user:', error);
+        return of(null);
+      })
+    );
+
+  }
 
   deleteUser(id: string): Observable<any> {
 

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CollectionRequest } from '../models/collection-request.model';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -48,4 +49,8 @@ export class CollectionRequestService {
     return this.http.patch(`${this.apiUrl}points?usersId=${userId}`, { points: pointsEarned });
   }
 
+
+  getRequestOwner(userId: string|number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}users/${userId}`);
+  }
 }

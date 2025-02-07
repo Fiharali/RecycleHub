@@ -7,7 +7,7 @@ import { NavbarComponent } from "../../layout/navbar/navbar.component";
 import { SidebarComponent } from "../../layout/sidebar/sidebar.component";
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
-import { User } from '../../models/user.mode';
+import { User } from '../../models/user.model';
 import { switchMap } from 'rxjs';
 
 @Component({
