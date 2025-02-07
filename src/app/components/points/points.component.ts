@@ -82,16 +82,17 @@ export class PointsComponent implements OnInit {
           icon: 'question',
           showCancelButton: true,
           confirmButtonText: 'Confirm',
+          color: 'success',
+          confirmButtonColor: '#28a745',
+          cancelButtonColor: 'red',
           cancelButtonText: 'Cancel'
         }).then((result) => {
           if (result.isConfirmed) {
-            // Prepare updated user with reduced points
             const updatedUser = {
               ...user,
               points: user.points - option.points
             };
 
-            // Update user points
             this.authService.updateUser(updatedUser).subscribe({
               next: (response) => {
                 Swal.fire({

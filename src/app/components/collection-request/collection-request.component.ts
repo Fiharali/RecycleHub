@@ -82,8 +82,10 @@ export class CollectionRequestComponent implements OnInit {
   }
 
   addWasteType(): void {
-    this.wasteTypes.push(this.createWasteTypeControl());
-  }
+    if (this.wasteTypes.length < 4) {
+      this.wasteTypes.push(this.createWasteTypeControl());
+    }
+    }
 
   removeWasteType(index: number): void {
     this.wasteTypes.removeAt(index);
@@ -103,6 +105,11 @@ export class CollectionRequestComponent implements OnInit {
 
   validateWasteTypes(formArray: FormArray): { [key: string]: boolean } | null {
     const validTypes = ['plastic', 'glass', 'paper', 'metal'];
+
+    if (formArray.length > 4) {
+      return { tooManyWasteTypes: true };
+    }
+
     return formArray.controls.every((control) =>
       validTypes.includes(control.value)
     )

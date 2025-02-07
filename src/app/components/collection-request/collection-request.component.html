@@ -57,6 +57,10 @@
               <div *ngIf="wasteTypes.errors?.['invalidWasteType']">
                 Please select valid waste types (plastic, glass, paper, metal).
               </div>
+
+              <div *ngIf="wasteTypes.errors?.['tooManyWasteTypes']">
+                You can only select up to 4 waste types.
+              </div>
             </div>
           </div>
 
