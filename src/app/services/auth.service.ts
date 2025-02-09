@@ -133,6 +133,7 @@ export class AuthService {
       return of(null);
     }
   }
+  
   getUser(email: string): Observable<User[]> {
     if (!email) {
       return of([]);
