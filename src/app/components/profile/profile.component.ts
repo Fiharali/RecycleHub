@@ -115,6 +115,8 @@ export class ProfileComponent implements OnInit {
       text: 'You will not be able to recover this account!',
       icon: 'warning',
       showCancelButton: true,
+      confirmButtonColor: '#28a745',
+      cancelButtonColor: 'red',
       confirmButtonText: 'Yes, delete it!',
       cancelButtonText: 'No, keep it'
     }).then((result) => {

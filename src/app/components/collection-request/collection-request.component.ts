@@ -158,33 +158,31 @@ export class CollectionRequestComponent implements OnInit {
     }
 
     try {
-      const currentUser = await firstValueFrom(
-        this.authService.getCurrentUser()
-      );
+      const currentUser = await firstValueFrom(this.authService.getCurrentUser());
 
       if (!currentUser || !currentUser.id) {
         Swal.fire({
           title: 'Error',
           text: 'You must be logged in to submit a collection request',
-          icon: 'error',
+          icon: 'error'
         });
         this.router.navigate(['/login']);
         return;
       }
 
       const requests = await firstValueFrom(
-        this.collectionService.getCollectionRequests()
+        this.collectionService.getUserCollectionRequests(currentUser.id)
       );
+
       const pendingRequests = requests.filter(
-        (request: CollectionRequest) =>
-          request.userId === currentUser.id && request.status === 'pending'
+        (request: CollectionRequest) => request.status === 'pending'
       );
 
       if (pendingRequests.length >= this.maxRequests) {
         Swal.fire({
           title: 'Error',
           text: 'You have reached the maximum limit of 3 pending requests.',
-          icon: 'error',
+          icon: 'error'
         });
         return;
       }
@@ -198,34 +196,25 @@ export class CollectionRequestComponent implements OnInit {
         desiredDate: this.collectionForm.value.desiredDate,
         desiredTimeSlot: this.collectionForm.value.desiredTimeSlot,
         notes: this.collectionForm.value.notes,
-        status: 'pending',
+        status: 'pending'
       };
 
-      this.collectionService.addCollectionRequest(request).subscribe({
-        next: () => {
-          Swal.fire({
-            title: 'Success!',
-            text: 'Collection request submitted successfully!',
-            icon: 'success',
-          });
-          this.collectionForm.reset();
-        },
-        error: (error) => {
-          this.errorMessage = 'Submission failed. Please try again.';
-          console.error('Collection Request error', error);
-          Swal.fire({
-            title: 'Error',
-            text: 'Failed to submit collection request. Please try again.',
-            icon: 'error',
-          });
-        },
+      await firstValueFrom(this.collectionService.addCollectionRequest(request));
+
+      Swal.fire({
+        title: 'Success!',
+        text: 'Collection request submitted successfully!',
+        icon: 'success'
       });
+
+      this.collectionForm.reset();
+
     } catch (error) {
       console.error('Error submitting collection request:', error);
       Swal.fire({
         title: 'Error',
         text: 'An unexpected error occurred. Please try again.',
-        icon: 'error',
+        icon: 'error'
       });
     }
   }

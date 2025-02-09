@@ -17,7 +17,7 @@ export class CollectionRequestService {
 
   constructor(private http: HttpClient) { }
 
-  getUserCollectionRequests(userId: number): Observable<CollectionRequest[]> {
+  getUserCollectionRequests(userId: number|string): Observable<CollectionRequest[]> {
     return this.http.get<CollectionRequest[]>(`${this.apiUrl}collectionRequests?userId=${userId}`);
   }
 
@@ -26,9 +26,11 @@ export class CollectionRequestService {
     return this.http.get<CollectionRequest[]>(`${this.apiUrl}`);
   }
 
+
   getCollectionRequestsWithStatusPending(adress:string): Observable<CollectionRequest[]> {
     return this.http.get<CollectionRequest[]>(`${this.apiUrl}collectionRequests?status=pending&collectionAddress=${adress}`);
   }
+
   addCollectionRequest(request: CollectionRequest): Observable<CollectionRequest> {
     return this.http.post<CollectionRequest>(this.apiUrl+"collectionRequests", request );
   }

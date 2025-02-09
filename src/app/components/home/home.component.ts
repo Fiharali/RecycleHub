@@ -55,17 +55,20 @@ export class HomeComponent {
     private collectionRequestService: CollectionRequestService,
     private authService: AuthService
   ) {
+    console.log('Home component initialized');
     this.loadUserCollections();
 
   }
 
   loadUserCollections() {
+    console.log(" Loading user collections");
     this.authService.getCurrentUser().subscribe((user) => {
       return (this.collectionRequests =
         this.collectionRequestService.getUserCollectionRequests(
           Number(user?.id) || 0
         ));
     });
+    console.log("User collections loaded");
   }
 
   features = [

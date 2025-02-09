@@ -23,13 +23,13 @@
           <i class="fa-solid fa-home"></i>
           <span class="ms-3">Home</span>
         </a>
-        @if (!isCollector()) {  
+        @if (!isCollector()) {
         <a
           routerLink="/profile"
           class="flex items-center p-2 text-gray-900 rounded-lg dar:text-white hover:bg-gray-100 dar:hover:bg-gray-700 group"
         >
-          <i class="fa-solid fa-table-columns"></i>
-          <span class="ms-3">profile</span>
+        <i class="fa-solid fa-address-card"></i>
+       <span class="ms-3">profile</span>
         </a>
 
 
@@ -37,8 +37,16 @@
           routerLink="/collection-request"
           class="flex items-center p-2 text-gray-900 rounded-lg dar:text-white hover:bg-gray-100 dar:hover:bg-gray-700 group"
         >
-          <i class="fa-solid fa-user"></i>
+        <i class="fa-solid fa-circle-plus"></i>
           <span class="ms-3">Collection Request</span>
+        </a>
+
+        <a
+          routerLink="/points"
+          class="flex items-center p-2 text-gray-900 rounded-lg dar:text-white hover:bg-gray-100 dar:hover:bg-gray-700 group"
+        >
+        <i class="fa-solid fa-star"></i>
+          <span class="ms-3">Change points</span>
         </a>
       }@else{
         <a

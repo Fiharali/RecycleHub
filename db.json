@@ -83,6 +83,18 @@
       "dateOfBirth": "2024-12-13",
       "points": 360,
       "role": "individual"
+    },
+    {
+      "id": "2613",
+      "email": "gihe@mailinator.com",
+      "password": "$2a$10$WnVIUZNKfKP64fRkKWn4POD0ZazIHd/3zx/3qKKRVstVEBgShjyWm",
+      "firstName": "Facere aut ipsum et",
+      "lastName": "Tempore ducimus fu",
+      "address": "Reprehenderit odit a",
+      "phoneNumber": "3456789976",
+      "dateOfBirth": "2010-11-14",
+      "points": 0,
+      "role": "individual"
     }
   ],
   "collectionRequests": [
@@ -116,7 +128,7 @@
       "wasteType": "glass",
       "photos": [],
       "estimatedWeight": 4,
-      "collectionAddress": "casa",
+      "collectionAddress": "tanger",
       "desiredDate": "2018-06-13",
       "desiredTimeSlot": "09:00-12:00",
       "notes": "Et dolor excepteur a",
@@ -124,7 +136,7 @@
     },
     {
       "id": "f968",
-      "userId": 5775,
+      "userId": "df10",
       "wasteType": "metal",
       "photos": [
         "https://imgv3.fotor.com/images/slider-image/A-clear-close-up-photo-of-a-woman.jpg"
@@ -138,7 +150,7 @@
     },
     {
       "id": "3bdf",
-      "userId": 5775,
+      "userId": "df10",
       "wasteType": "plastic, glass",
       "photos": [],
       "estimatedWeight": 11,
@@ -190,7 +202,7 @@
       "wasteType": "metal",
       "photos": [],
       "estimatedWeight": 14,
-      "collectionAddress": "casa",
+      "collectionAddress": "tanger",
       "desiredDate": "1983-06-13",
       "desiredTimeSlot": "09:00-12:00",
       "notes": "Corporis obcaecati c",
@@ -243,6 +255,18 @@
       "desiredTimeSlot": "09:00-12:00",
       "notes": "Sint autem do quasi ",
       "status": "completed"
+    },
+    {
+      "id": "eee8",
+      "userId": "2613",
+      "wasteType": "metal",
+      "photos": [],
+      "estimatedWeight": 64,
+      "collectionAddress": "Sed minima ipsum in",
+      "desiredDate": "1991-11-21",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Sit magna voluptatem",
+      "status": "pending"
     }
   ]
 }
