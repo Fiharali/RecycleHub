@@ -267,6 +267,30 @@
       "desiredTimeSlot": "09:00-12:00",
       "notes": "Sit magna voluptatem",
       "status": "pending"
+    },
+    {
+      "id": "729b",
+      "userId": "2613",
+      "wasteType": "glass",
+      "photos": [],
+      "estimatedWeight": 27,
+      "collectionAddress": "Voluptate enim neque",
+      "desiredDate": "2006-02-06",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Minus et in deleniti",
+      "status": "pending"
+    },
+    {
+      "id": "9be4",
+      "userId": "2613",
+      "wasteType": "glass",
+      "photos": [],
+      "estimatedWeight": 97,
+      "collectionAddress": "Laboriosam id sequ",
+      "desiredDate": "2011-06-17",
+      "desiredTimeSlot": "09:00-12:00",
+      "notes": "Dolorum quidem ea no",
+      "status": "pending"
     }
   ]
 }

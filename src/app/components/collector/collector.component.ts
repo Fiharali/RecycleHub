@@ -95,12 +95,10 @@ export class CollectorComponent {
       if (result.isConfirmed) {
         const updatedRequest = { ...request, status: newStatus };
 
-        // First update the request status
         this.collectionRequestService
           .updateCollectionRequest(request.id!, updatedRequest)
           .subscribe({
             next: () => {
-              // If status is completed or accepted, update user points
               if (newStatus === 'completed' || newStatus === 'accepted') {
                 const earnedPoints = this.calculatePoints(request.wasteType, request.estimatedWeight);
 
